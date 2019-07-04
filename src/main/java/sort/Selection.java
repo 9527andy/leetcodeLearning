@@ -1,5 +1,7 @@
 package sort;
 
+import java.util.Optional;
+
 /**
  * 选择排序
  * 首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置。
@@ -13,10 +15,18 @@ package sort;
 public class Selection<T extends Comparable<T>> extends Sort<T> {
     @Override
     public void sort(T[] nums) {
+        Optional.of(nums).orElseThrow(NullPointerException::new);
 
+        int length = nums.length;
 
-        for (T num : nums) {
-            System.out.print(num);
+        for (int i = 0; i < length; i++) {
+            int min = i;
+            for (int j = i+1; j < length; j++){
+                if (less(nums[j],nums[min])){
+                    min = j;
+                }
+            }
+            swap(nums,i,min);
         }
     }
 
