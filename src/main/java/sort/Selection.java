@@ -9,7 +9,7 @@ import java.util.Optional;
  *
  * 再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。
  * 重复第二步，直到所有元素均排序完毕。
- *
+ * 
  * @param <T>
  */
 public class Selection<T extends Comparable<T>> extends Sort<T> {
