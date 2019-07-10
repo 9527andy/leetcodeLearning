@@ -20,7 +20,7 @@ public class Bubble<T extends Comparable<T>> extends Sort<T> {
         int length = nums.length;
 
         for (int i = length; i > 0; i--) {
-            for (int j = 0; j < length-1; j++) {
+            for (int j = 0; j < i-1; j++) {
                 if (less(nums[j + 1], nums[j])) {
                     swap(nums, j + 1, j);
                 }
