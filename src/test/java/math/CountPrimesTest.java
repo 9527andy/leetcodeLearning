@@ -20,5 +20,8 @@ public class CountPrimesTest {
     public void countPrimes() {
         int actual = countPrimes.countPrimes(10);
         assertEquals(4, actual);
+
+        int actual1 = countPrimes.countPrimes(2);
+        assertEquals(0, actual1);
     }
 }
