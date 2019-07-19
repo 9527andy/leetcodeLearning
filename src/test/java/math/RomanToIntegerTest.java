@@ -20,10 +20,12 @@ public class RomanToIntegerTest {
         int return9 = romanToInteger.romanToInt("IX");
         int return58 = romanToInteger.romanToInt("LVIII");
         int return1994 = romanToInteger.romanToInt("MCMXCIV");
+        int return1476 = romanToInteger.romanToInt("MCDLXXVI");
         assertEquals(3, return3);
-        assertEquals(3, return4);
+       assertEquals(4, return4);
         assertEquals(9, return9);
         assertEquals(58, return58);
         assertEquals(1994, return1994);
+        assertEquals(1476, return1476);
     }
 }
