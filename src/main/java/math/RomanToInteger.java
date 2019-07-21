@@ -1,5 +1,10 @@
 package math;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
  * Symbol       Value
@@ -20,30 +25,67 @@ package math;
  * Given a roman numeral, convert it to an integer. Input is guaranteed to be within the range from 1 to 3999.
  * Example 1:
  * <p>
- * Input: "III"
+ * Input: 'III'
  * Output: 3
  * Example 2:
  * <p>
- * Input: "IV"
+ * Input: 'IV'
  * Output: 4
  * Example 3:
  * <p>
- * Input: "IX"
+ * Input: 'IX'
  * Output: 9
  * Example 4:
  * <p>
- * Input: "LVIII"
+ * Input: 'LVIII'
  * Output: 58
  * Explanation: L = 50, V= 5, III = 3.
  * Example 5:
  * <p>
- * Input: "MCMXCIV"
+ * Input: 'MCMXCIV'
  * Output: 1994
  * Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
  */
 public class RomanToInteger {
     public int romanToInt(String s) {
+        Map<Object, Integer> map = new HashMap<>();
+        map.put('I', 1);
+        map.put('V', 5);
+        map.put('X', 10);
+        map.put('L', 50);
+        map.put('C', 100);
+        map.put('D', 500);
+        map.put('M', 1000);
 
-        return 0;
+
+        char[] romanArray = s.toCharArray();
+        int initial = 0;
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < romanArray.length; i++) {
+
+            if (romanArray[i] == 'I' && (i + 1) < romanArray.length && (romanArray[i + 1] == 'V' || romanArray[i + 1] == 'X')) {
+                list.add(map.get(romanArray[i + 1]) - map.get(romanArray[i]));
+                i++;
+                continue;
+            }
+
+            if (romanArray[i] == 'X' && (i + 1) < romanArray.length && (romanArray[i + 1] == 'L' || romanArray[i + 1] == 'C')) {
+                list.add(map.get(romanArray[i + 1]) - map.get(romanArray[i]));
+                i++;
+                continue;
+            }
+
+            if (romanArray[i] == 'C' && (i + 1) < romanArray.length && (romanArray[i + 1] == 'D' || romanArray[i + 1] == 'M')) {
+                list.add(map.get(romanArray[i + 1]) - map.get(romanArray[i]));
+                i++;
+                continue;
+            }
+            list.add(map.get(romanArray[i]));
+        }
+
+        for (Integer integer : list) {
+            initial += integer;
+        }
+        return initial;
     }
 }
