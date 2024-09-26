@@ -26,10 +26,11 @@ public class CycleLinkedListTest {
         node2.setNext(node3);
         node3.setNext(node4);
         node4.setNext(node5);
-        node5.setNext(node1);
+        node5.setNext(node2);
 
         CycleLinkedList linkedList = new CycleLinkedList();
         Boolean result = linkedList.isCycleLinkedList(node1);
+        //Boolean result = linkedList.isCycleLinkedList2(node1);
         assertTrue(result);
     }
 
@@ -42,6 +43,7 @@ public class CycleLinkedListTest {
 
         CycleLinkedList linkedList = new CycleLinkedList();
         Boolean result = linkedList.isCycleLinkedList(node1);
+        //Boolean result = linkedList.isCycleLinkedList2(node1);
         assertFalse(result);
     }
 
@@ -49,5 +51,6 @@ public class CycleLinkedListTest {
     public void cycleLinkedListIsNull(){
         CycleLinkedList linkedList = new CycleLinkedList();
         Boolean result = linkedList.isCycleLinkedList(null);
+        //Boolean result = linkedList.isCycleLinkedList2(null);
     }
 }
